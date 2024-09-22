@@ -32,7 +32,12 @@ set_target_properties(Engine PROPERTIES
 )
 
 include(../config.cmake)
-execute_process(COMMAND rsync -avz ${SSH_OPT} ${DLL_PATH_ENGINE} ${SSH_USER}@${SSH_HOST}:${SSH_PATH})
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_custom_command(TARGET Engine
+            POST_BUILD
+            COMMAND rsync -avz ${SSH_OPT} ${DLL_PATH_ENGINE} ${SSH_USER}@${SSH_HOST}:${SSH_PATH}
+    )
+endif ()
 
 # Ajouter des tests si nécessaire
 enable_testing()
