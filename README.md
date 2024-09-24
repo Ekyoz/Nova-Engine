@@ -2,7 +2,6 @@
 
 **Nova Engine** is a 2D game engine written in C++ using SDL2 for window and event management, as well as OpenGL for graphical rendering.
 
-
 ## Prerequisites
 
 - A compiler supporting **C++20**
@@ -12,7 +11,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Ekyoz/Nova-Engine.git
+   git clone <REPOSITORY_URL>
    cd Nova_Engine
    ```
 
@@ -51,3 +50,5 @@ This project is developed in collaboration with [Mizu-cmd](https://github.com/Mi
 ## Features
 
 - 2D Game Engine
+
+![Logo](path/to/your/logo.png)  <!-- Replace with the path to your logo -->
