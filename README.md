@@ -1,4 +1,4 @@
-# Nova Engine
+# Nova Engine <img src="/assets/nova-logo.png" alt="Logo" style="float:right; width:100px; height:auto; margin-left:10px;"/>
 
 **Nova Engine** is a 2D game engine written in C++ using SDL2 for window and event management, as well as OpenGL for graphical rendering.
 
@@ -50,5 +50,3 @@ This project is developed in collaboration with [Mizu-cmd](https://github.com/Mi
 ## Features
 
 - 2D Game Engine
-
-![Logo](path/to/your/logo.png)  <!-- Replace with the path to your logo -->
