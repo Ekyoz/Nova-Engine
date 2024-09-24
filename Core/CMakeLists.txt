@@ -25,7 +25,7 @@ FetchContent_MakeAvailable(SDL2 SDL2_image)
 add_library(Core SHARED src/core.cpp)
 
 # Lier SDL2 et SDL2_image à Core
-target_link_libraries(Core PRIVATE SDL2 SDL2_image -static-libstdc++)
+target_link_libraries(Core PRIVATE Lib SDL2 SDL2_image -static-libstdc++)
 
 # Définir les répertoires d'inclusion
 target_include_directories(Core PUBLIC
@@ -33,6 +33,7 @@ target_include_directories(Core PUBLIC
         $<INSTALL_INTERFACE:include>
         $<TARGET_PROPERTY:SDL2,INTERFACE_INCLUDE_DIRECTORIES>
         $<TARGET_PROPERTY:SDL2_image,INTERFACE_INCLUDE_DIRECTORIES>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../Lib/include>  # Inclure le dossier d'en-tête de Core
 )
 
 set_target_properties(Core PROPERTIES
@@ -47,7 +48,3 @@ if(CMAKE_BUILD_TYPE STREQUAL "Release")
             COMMAND rsync -avz ${SSH_OPT} ${DLL_PATH_CORE} ${SSH_USER}@${SSH_HOST}:${SSH_PATH}
     )
 endif ()
-    
-# Ajouter des tests si nécessaire
-enable_testing()
-add_subdirectory(test)

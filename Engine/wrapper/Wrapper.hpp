@@ -7,6 +7,7 @@
 #endif
 
 #include <iostream>
+#include <list>
 #include <Core.hpp>
 
 //-------- Components --------//
@@ -17,3 +18,10 @@
 
 //-------- Entities --------//
 #include <Entity/Entity.hpp>
+
+extern "C"{
+	DLL_EXPORT Entity* createEntity();
+	DLL_EXPORT void run();
+	DLL_EXPORT Texture* createTexture(char *path);
+	DLL_EXPORT void addComponent(Entity* entity, Component* component);
+}

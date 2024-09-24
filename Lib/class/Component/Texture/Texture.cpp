@@ -1,8 +1,12 @@
 #include "Texture.hpp"
 
+#include <iostream>
+#include <ostream>
+
 Texture::Texture(const std::string& path):
 	Component(), _path(path)
 {
+	std::cout << "Create tex with : " << path << std::endl;
 }
 
 Texture::~Texture()

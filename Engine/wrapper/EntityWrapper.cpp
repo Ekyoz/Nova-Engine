@@ -1,3 +1,6 @@
+#include <Engine.hpp>
+#include <Entity/Entity.hpp>
+
 #include "Wrapper.hpp"
 
 typedef void (*EntityPositionCallback)(float x, float y);
@@ -7,6 +10,7 @@ extern "C"{
 	DLL_EXPORT Entity* createEntity()
 	{ 
 		Entity* entity = new Entity();
+		entities.push_front(entity);
 		return entity;
 	}
 	DLL_EXPORT void addComponent(Entity* entity, Component* component)
@@ -20,14 +24,9 @@ extern "C"{
 		position_callback = callback;
 	}
 
-	DLL_EXPORT void setPathImg(char *path)
-	{
-		std::cout << path << std::endl;
-		setPath(path);
-	}
-
 	DLL_EXPORT void run()
 	{
-		test();
+		std::cout << "test" << endl;
+		test(entities);
 	}
 }

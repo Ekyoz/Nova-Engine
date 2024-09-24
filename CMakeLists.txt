@@ -4,6 +4,7 @@ project(Nova_Engine)
 # Ajouter les sous-dossiers
 add_subdirectory(Core)
 add_subdirectory(Engine)
+add_subdirectory(Lib)
 
 include(FetchContent)
 FetchContent_Declare(
