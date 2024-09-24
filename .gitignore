@@ -4,4 +4,3 @@ cmake-build-release
 config.cmake
 Editor
 .DS_Store
-assets
