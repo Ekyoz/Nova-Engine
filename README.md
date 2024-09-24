@@ -1,11 +1,7 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
-    <h1 style="margin: 0;">Nova Engine</h1>
-    <div style="margin-left: auto;">
-        <img src="/assets/nova-logo.png" alt="Logo" style="width:100px; height:auto;"/>
-    </div>
-</div>
+#Nova Engine
 
-**Nova Engine** is a 2D game engine written in C++ using SDL2 for window and event management, as well as OpenGL for graphical rendering.
+**Nova Engine** is a 2D game engine written in C++ using SDL2 for window and event management, as well as OpenGL for graphical rendering. <img src="/assets/nova-logo.png" alt="Logo" style="float:right; width:100px; height:auto; margin-left:10px;"/>
+
 
 ## Prerequisites
 
