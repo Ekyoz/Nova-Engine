@@ -25,7 +25,7 @@ FetchContent_MakeAvailable(SDL2 SDL2_image)
 add_library(Core SHARED src/core.cpp)
 
 # Lier SDL2 et SDL2_image à Core
-target_link_libraries(Core PRIVATE SDL2 SDL2_image)
+target_link_libraries(Core PRIVATE SDL2 SDL2_image -static-libstdc++)
 
 # Définir les répertoires d'inclusion
 target_include_directories(Core PUBLIC

@@ -8,7 +8,7 @@ project(Engine)
 add_library(Engine SHARED src/Engine.cpp)
 
 # Spécifier que Engine dépend de Core
-target_link_libraries(Engine PRIVATE Core)
+target_link_libraries(Engine PRIVATE Core -static-libstdc++)
 
 # Ajouter tous les fichiers .cpp dans le dossier class
 file(GLOB_RECURSE CLASS_SOURCES class/*/*.cpp)
