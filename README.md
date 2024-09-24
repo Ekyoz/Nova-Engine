@@ -1,6 +1,8 @@
 <div style="display: flex; justify-content: space-between; align-items: center;">
     <h1 style="margin: 0;">Nova Engine</h1>
-    <img src="/assets/nova-logo.png" alt="Logo" style="width:100px; height:auto;"/>
+    <div style="margin-left: auto;">
+        <img src="/assets/nova-logo.png" alt="Logo" style="width:100px; height:auto;"/>
+    </div>
 </div>
 
 **Nova Engine** is a 2D game engine written in C++ using SDL2 for window and event management, as well as OpenGL for graphical rendering.
@@ -14,7 +16,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone <REPOSITORY_URL>
+   git clone https://github.com/Ekyoz/Nova-Engine.git
    cd Nova_Engine
    ```
 
