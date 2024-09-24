@@ -1,22 +1,21 @@
+# Nova Engine <img src="/assets/nova-logo.png" alt="Logo" style="float:right; width:100px; height:auto; margin-left:10px;"/>
 
-# Nova Engine
+**Nova Engine** is a 2D game engine written in C++ using SDL2 for window and event management, as well as OpenGL for graphical rendering.
 
-**Nova Engine** est un moteur de jeu 2D écrit en C++ utilisant SDL2 pour la gestion des fenêtres et des événements, ainsi qu'OpenGL pour le rendu graphique.
+## Prerequisites
 
-## Prérequis
-
-- Un compilateur supportant **C++20**
-- **SDL2** pour la gestion des fenêtres et des événements
+- A compiler supporting **C++20**
+- **SDL2** for window and event management
 
 ## Installation
 
-1. Clonez le dépôt :
+1. Clone the repository:
    ```bash
-   git clone <URL_DU_DEPOT>
+   git clone <REPOSITORY_URL>
    cd Nova_Engine
    ```
 
-2. Créez un dossier de construction et compilez le projet :
+2. Create a build directory and compile the project:
    ```bash
    mkdir build
    cd build
@@ -24,30 +23,30 @@
    make
    ```
 
-3. Pour utiliser l'engine, placez le fichier `.dll` généré dans le même dossier que l'exécutable ou dans le dossier de votre projet, avec les DLL de **SDL2** et **SDL2_image**.
+3. To use the engine, place the generated `.dll` file in the same directory as the executable or in your project folder, along with the **SDL2** and **SDL2_image** DLLs.
 
-## Utilisation
+## Usage
 
-*(À compléter)*  
-- Comment exécuter le moteur après l'installation ?
+*(To be completed)*  
+- How to run the engine after installation?
 
 ## Documentation
 
-*(À compléter)*  
-- Liens ou fichiers supplémentaires.
+*(To be completed)*  
+- Additional links or files.
 
 ## Contribution
 
-*(Non spécifié pour l’instant)*
+*(Not specified for now)*
 
-## Licence
+## License
 
-Ce projet est sous la licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Crédits
+## Credits
 
-Ce projet est développé en collaboration avec [Mizu-cmd](https://github.com/Mizu-cmd).
+This project is developed in collaboration with [Mizu-cmd](https://github.com/Mizu-cmd).
 
-## Fonctionnalités
+## Features
 
-- Moteur de jeu 2D
+- 2D Game Engine
