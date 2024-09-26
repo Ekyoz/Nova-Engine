@@ -1,46 +1,49 @@
-# Core/CMakeLists.txt
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.24)
+project(Core LANGUAGES CXX)
 
-# Nom de la bibliothèque
-project(Core)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+#---- Install SFML -------#
 include(FetchContent)
-
-# Télécharger SDL2
 FetchContent_Declare(
-        SDL2
-        URL https://github.com/libsdl-org/SDL/releases/download/release-2.30.7/SDL2-2.30.7.zip
+        sfml
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG 2.6.1
+)
+fetchcontent_makeavailable(sfml)
+
+#----- Include headers -----#
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/class/*)
+include_directories(${sfml_SOURCE_DIR}/include)
+
+#------- Add all source files -------#
+file(GLOB_RECURSE SOURCES
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/class/*/*.cpp"
 )
 
-# Télécharger SDL2_image
-FetchContent_Declare(
-        SDL2_image
-        URL https://github.com/libsdl-org/SDL_image/releases/download/release-2.8.2/SDL2_image-2.8.2.zip
+#------ Create lib ------#
+add_library(Core SHARED ${SOURCES})
+
+#------- Link lib to Core --------#
+target_link_libraries(Core PRIVATE Lib sfml-graphics sfml-window sfml-system -static-libstdc++)
+target_include_directories(Core PUBLIC 
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/class
+        ${sfml_SOURCE_DIR}/include
+        $<TARGET_PROPERTY:Lib,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
-# Télécharger et préparer les dépendances
-FetchContent_MakeAvailable(SDL2 SDL2_image)
-
-# Créer une bibliothèque statique à partir des fichiers source
-add_library(Core SHARED src/core.cpp)
-
-# Lier SDL2 et SDL2_image à Core
-target_link_libraries(Core PRIVATE Lib SDL2 SDL2_image -static-libstdc++)
-
-# Définir les répertoires d'inclusion
-target_include_directories(Core PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-        $<TARGET_PROPERTY:SDL2,INTERFACE_INCLUDE_DIRECTORIES>
-        $<TARGET_PROPERTY:SDL2_image,INTERFACE_INCLUDE_DIRECTORIES>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../Lib/include>  # Inclure le dossier d'en-tête de Core
-)
-
+#------ Properties -------#
 set_target_properties(Core PROPERTIES
         OUTPUT_NAME "Core"
         WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
 
+#------ Push to server ------#
 include(../config.cmake)
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
     add_custom_command(TARGET Core

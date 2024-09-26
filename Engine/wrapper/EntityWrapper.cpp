@@ -8,7 +8,7 @@ typedef void (*EntityPositionCallback)(float x, float y);
 extern "C"{
 	//-------- Entity --------//
 	DLL_EXPORT Entity* createEntity()
-	{ 
+	{
 		Entity* entity = new Entity();
 		entities.push_front(entity);
 		return entity;
@@ -27,6 +27,6 @@ extern "C"{
 	DLL_EXPORT void run()
 	{
 		std::cout << "test" << endl;
-		test(entities);
+		open_window();
 	}
 }

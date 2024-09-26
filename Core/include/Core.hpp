@@ -4,14 +4,12 @@
 #include <iostream>
 #include <list>
 #include <ostream>
-#include <Entity/Entity.hpp>
-#include <Component/Component/Component.hpp>
-#include <Component/Texture/Texture.hpp>
 
-#include "SDL.h"
-#include "SDL_image.h"
+#include "Entity/Entity.hpp"
+#include "Window/Window.hpp"
 
-void setPath(char *path);
-void test(std::list<Entity*> entities);
+#include <SFML/Graphics.hpp>
+
+void open_window();
 
 #endif //CORE_HPP

@@ -1,33 +1,31 @@
-# Lib/CMakeLists.txt
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.24)
+project(Lib LANGUAGES CXX)
 
-# Nom de la bibliothèque
-project(Lib)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Créer une bibliothèque statique à partir des fichiers source
-add_library(Lib STATIC src/lib.cpp)
+#----- Include headers -----#
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/class/*)
 
-# Ajouter tous les fichiers .cpp dans le dossier class
-file(GLOB_RECURSE CLASS_SOURCES class/*/*.cpp)
-file(GLOB_RECURSE CLASS_HEADERS class/*/*.hpp)
-
-# Définir les répertoires d'inclusion
-target_sources(Lib PRIVATE ${CLASS_SOURCES})
-target_include_directories(Lib PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/class>
+#------- Add all source files -------#
+file(GLOB_RECURSE SOURCES
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/class/*/*.cpp"
 )
 
+#------ Create lib ------#
+add_library(Lib STATIC ${SOURCES})
+
+#------- Link lib to Core --------#
+target_include_directories(Lib PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/class
+)
+
+#------ Properties ------#
 set_target_properties(Lib PROPERTIES
         OUTPUT_NAME "Lib"
         WINDOWS_EXPORT_ALL_SYMBOLS ON
 )
-
-#include(../config.cmake)
-#if(CMAKE_BUILD_TYPE STREQUAL "Release")
-#    add_custom_command(TARGET Lib
-#            POST_BUILD
-#            COMMAND rsync -avz ${SSH_OPT} ${DLL_PATH_ENGINE} ${SSH_USER}@${SSH_HOST}:${SSH_PATH}
-#    )
-#endif ()
